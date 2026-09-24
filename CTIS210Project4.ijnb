@@ -1,0 +1,375 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 5,
+  "metadata": {
+    "language_info": {
+      "name": "java"
+    }
+  },
+  "cells": [
+    {
+      "id": "4e2b1b51-628e-47df-915a-b665a4c0e661",
+      "cell_type": "markdown",
+      "source": "### CTIS 210 Project 4: Methods that make decisions\n\nOne of the way in which programs are most useful is when they can choose to perform different actions as the information they have changes. \n\nA scenario that illustrates that point involves Guilford students registering for classes next semester. Each student's registration window opens at a time that is effectively based on two rules, which can be expressed using a point system.\n\n* At the time the first registration window opens, you are assigned a number of points based on the number of credits you have already **completed** with a passing grade. Your total credits include those taken at Guilford, credits transferred in, or credits assigned to you, such as for an AP exam score:\n    - 88 or more total credits: 4 points\n    - 56-87 total credits: 3 points\n    - 24-55 total credits: 2 points\n    - Fewer than 24 total credits: 1 point\n* If you are studying away from campus through a Guilford program, 5 additional points are added.\n\nThe more points you have, the earlier you get to register.\n\nIn this project, we'll now put that into practice using conditional logic.\n\nNote that you should run each code cell after making modifications to it. Don't continue to the next task until you are convinced that the code you've written so far is already working.\n",
+      "metadata": {
+        "language": "markdown",
+        "id": "4e2b1b51-628e-47df-915a-b665a4c0e661"
+      }
+    },
+    {
+      "id": "4f29b618-bd97-49b6-8b11-3fce9d040014",
+      "cell_type": "markdown",
+      "source": "#### Initial setup task\n\nIn the following code cell, declare the following variables and assign them values as described.\n\n* A `String` variable with the identifier `studentName` and initialized with any name you choose.\n* A `String` variable with the identifier `gNumber` and initialized with a G number in standard format (\"G00\" followed by six digits).\n* Variables that hold the following decimal (floating-point) numbers:\n\n    |Description|Identifier|Initial value|\n    |:--|:--|:--|\n    |Credits earned at Guilford|`guilfordCredits`|36|\n    |Transfer credits|`transferCredits`|12|\n    |Other credits|`otherCredits`|4|\n    |Is the student studying away this semester?|`studyAway`|`false`|\n\nUse `System.out.println` or `System.out.printf` statements to display the information about the student in a nicely formatted way.",
+      "metadata": {
+        "language": "markdown",
+        "id": "4f29b618-bd97-49b6-8b11-3fce9d040014"
+      }
+    },
+    {
+      "id": "501bd002-0b84-473b-b6ae-34d2e41f2412",
+      "cell_type": "code",
+      "source": "// Use this cell to complete the initial setup task",
+      "metadata": {
+        "language": "java",
+        "id": "501bd002-0b84-473b-b6ae-34d2e41f2412",
+        "executionSummary": {
+          "executionOrder": 5,
+          "success": true
+        }
+      },
+      "execution_count": 5,
+      "outputs": []
+    },
+    {
+      "id": "2a882921-e0f2-4eba-bf6e-dbc54ea88965",
+      "cell_type": "markdown",
+      "source": "Continuing with initial setup, use the next cell to define a method with the identifier `calcTotalCredits` that has three decimal parameters, `gCredits`, `tCredits`, and `oCredits`. The method should return a decimal value. That value is the sum of the three parameters.",
+      "metadata": {
+        "language": "markdown",
+        "id": "2a882921-e0f2-4eba-bf6e-dbc54ea88965"
+      }
+    },
+    {
+      "id": "cfc01da5-6202-4769-b016-73773cd23e2f",
+      "cell_type": "code",
+      "source": "// Use this cell for the method definition\n",
+      "metadata": {
+        "language": "java",
+        "id": "cfc01da5-6202-4769-b016-73773cd23e2f",
+        "executionSummary": {
+          "executionOrder": 6,
+          "success": true
+        }
+      },
+      "execution_count": 6,
+      "outputs": []
+    },
+    {
+      "id": "ac6a1e09-5d19-49d3-8b7b-91179377abdc",
+      "cell_type": "markdown",
+      "source": "And to complete the initial setup, write a statement (or maybe more than one statement) that invokes `calcTotalCredits` with the three variables you originally defined as arguments, and prints out the total number of credits with annotation.",
+      "metadata": {
+        "language": "markdown",
+        "id": "ac6a1e09-5d19-49d3-8b7b-91179377abdc"
+      }
+    },
+    {
+      "id": "4ca87c27-ee69-4619-8df3-dd1f96f46403",
+      "cell_type": "code",
+      "source": "// Complete the initial setup in this cell",
+      "metadata": {
+        "language": "java",
+        "id": "4ca87c27-ee69-4619-8df3-dd1f96f46403",
+        "executionSummary": {
+          "executionOrder": 7,
+          "success": true
+        }
+      },
+      "execution_count": 7,
+      "outputs": []
+    },
+    {
+      "id": "d0a4551f-1a0c-4269-9a30-7734beb29c1d",
+      "cell_type": "markdown",
+      "source": "#### Comparison and logical expressions task\n\nTo make decisions, our program has to decide whether particular assertions are `true` or `false`. For example, we can assert \"The student has more than 56 or more credits completed at Guilford\". Based on the values provided at the beginning of this project, that assertion is `false`. In code, we would see that by examining the value of the **comparison** expression\n\n```java\nguilfordCredits >= 56\n```\n\nTest this assertion by writing the following statement in the next cell.\n\n```java\nSystem.out.println(\"Student has 56 or more Guilford credits: \" + (guilfordCredits >= 56));\n```\n",
+      "metadata": {
+        "language": "markdown",
+        "id": "d0a4551f-1a0c-4269-9a30-7734beb29c1d"
+      }
+    },
+    {
+      "id": "d792b8ad-a0ee-4ccf-ad59-64fcb9aed83a",
+      "cell_type": "code",
+      "source": "// Test the guilfordCredits assertion in this cell",
+      "metadata": {
+        "language": "java",
+        "id": "d792b8ad-a0ee-4ccf-ad59-64fcb9aed83a",
+        "executionSummary": {
+          "executionOrder": 8,
+          "success": true
+        }
+      },
+      "execution_count": 8,
+      "outputs": []
+    },
+    {
+      "id": "ff1adaf7-f013-4d4e-bdf3-640cd83ac96d",
+      "cell_type": "markdown",
+      "source": "To continue this task, write statements in the next code cell that test the following assertions.\n\n* The student has less than 12 transfer credits.\n* The student is studying away this semester.\n* The total number of credits the student has is less than 88.",
+      "metadata": {
+        "language": "markdown",
+        "id": "ff1adaf7-f013-4d4e-bdf3-640cd83ac96d"
+      }
+    },
+    {
+      "id": "96a59979-5516-4e0f-b4d5-76415bebb0d3",
+      "cell_type": "code",
+      "source": "// Continue the task in this code cell by displaying evaluations of the three assertions.",
+      "metadata": {
+        "language": "java",
+        "id": "96a59979-5516-4e0f-b4d5-76415bebb0d3",
+        "executionSummary": {
+          "executionOrder": 9,
+          "success": true
+        }
+      },
+      "execution_count": 9,
+      "outputs": []
+    },
+    {
+      "id": "6c7fd9a2-8717-4e75-a6e0-218e7a80451e",
+      "cell_type": "markdown",
+      "source": "We often need to test more complex assertions, like \"The student has fewer than 24 credits and is studying away\". Here's the **logical** expression that evaluates that assertion.\n\n```java\ncalcTotalCredits(guilfordCredits, transferCredits, otherCredits) < 24 && studyAway\n```\n\nIn the next code cell, write a statement like the previous ones that displays the evaluation of that assertion. Then, use comparison and logical operators to test the following assertions.\n\n* The student has at least 56 credits completed at Guilford or is not studying away.\n* The student has less than 8 other credits and more than 10 transfer credits.",
+      "metadata": {
+        "language": "markdown",
+        "id": "6c7fd9a2-8717-4e75-a6e0-218e7a80451e"
+      }
+    },
+    {
+      "id": "d64e5b89-553d-403e-b637-0150081da31e",
+      "cell_type": "code",
+      "source": "// Continue the task in this code cell by displaying evaluations of the two assertions.",
+      "metadata": {
+        "language": "java",
+        "id": "d64e5b89-553d-403e-b637-0150081da31e",
+        "executionSummary": {
+          "executionOrder": 10,
+          "success": true
+        }
+      },
+      "execution_count": 10,
+      "outputs": []
+    },
+    {
+      "id": "b1c86fd6-5323-48a8-90bf-4a366d13a682",
+      "cell_type": "markdown",
+      "source": "***Optional* challenge exercise**\n\nLeave the following code cell blank if you do not do this challenge exercise.\n\nUse the code cell to test the following assertion.\n\n* The student's G number is in the correct format. (That format is defined at the beginning of this project.)\n\nThere are multiple ways to approach this exercise that mostly use functionality we've discussed in class. Two methods that may be value are `Character.isDigit()` and `Character.isLetter()`. Each of those methods has one parameter, a `char`, and returns a `boolean` value.",
+      "metadata": {
+        "language": "markdown",
+        "id": "b1c86fd6-5323-48a8-90bf-4a366d13a682"
+      }
+    },
+    {
+      "id": "3fe28105-05c1-4471-9239-65355fac6a5c",
+      "cell_type": "code",
+      "source": "// Code for challenge exercise; leave blank if you don't choose to complete it",
+      "metadata": {
+        "language": "java",
+        "id": "3fe28105-05c1-4471-9239-65355fac6a5c",
+        "executionSummary": {
+          "executionOrder": 11,
+          "success": true
+        }
+      },
+      "execution_count": 11,
+      "outputs": []
+    },
+    {
+      "id": "89eb8ec4-7c67-423b-951d-e2d3fc0793d5",
+      "cell_type": "markdown",
+      "source": "#### Conditional statement task\n\nA conditional statement allows the program to make decisions based on evaluating assertions. They use the keyword `if` and can also use the keyword `else`. An example is the following.\n\n>If the student has 88 or more total credits, give them 4 additional registration points. If they're studying away, give them 5 additional registration points.\n\nAnd here are the conditional statements that implement that.\n\n```java\ndouble registrationPoints = 0;\ndouble totalCredits = calcTotalCredits(guilfordCredits, transferCredits, otherCredits);\nif (totalCredits >= 88) {\n    registrationPoints = registrationPoints + 4;\n} \n\nif (studyAway) {\n    registrationPoints = registrationPoints + 5;\n}\n```\n\nAdd these conditional statements to the next code cell. Then, add a statement that prints out the value of `registrationPoints` with annotation.",
+      "metadata": {
+        "language": "markdown",
+        "id": "89eb8ec4-7c67-423b-951d-e2d3fc0793d5"
+      }
+    },
+    {
+      "id": "42a9264c-4180-4d89-bd16-3e1dcc3d3fe0",
+      "cell_type": "code",
+      "source": "// Start the conditional statement task in this code cell\n",
+      "metadata": {
+        "language": "java"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "id": "2a65d7da-7d78-4018-b334-9cf2309f149e",
+      "cell_type": "markdown",
+      "source": "To continue this task, do the following in order.\n\n* At the beginning of the last code cell, assign the value 80 to `guilfordCredits`. Then run the code cell again to see the change in the value of `registrationPoints`.\n* Now assign the value `true` to `studyAway` at the beginning of that cell. Run the code cell again to see the change.\n\nVerify that the results are what you expect based on the current values of all the variables that affect the total number of points. ",
+      "metadata": {
+        "language": "markdown",
+        "id": "2a65d7da-7d78-4018-b334-9cf2309f149e"
+      }
+    },
+    {
+      "id": "7577eabe-2ff4-49ef-b821-cac67f3020a7",
+      "cell_type": "markdown",
+      "source": "To continue this task, we want to add conditional statements that use all the rules that assign point values. For example, we have the rule\n\n* 56-87 total credits: Add 3 points\n\nThe logical expression to test that assertion is\n\n```java\ntotalCredits >= 56 && totalCredits <= 87\n```\n\nFollowing the pattern in the code cell above, add three conditional statements to that code cell that implement the remaining rules. Modify the values of the variables such as `guilfordCredits`, `otherCredits`, and `transferCredits` so that you're fully testing that your rules work as expected.\n\n*Optional*: There are two ways to add the additional conditions. What I describe here has you use additional `if` conditional statements. You can also use the `else` keyword to build more complex conditional statements. Either approach is fine as long as the code does what it's supposed to and you can explain how it works.",
+      "metadata": {
+        "language": "markdown",
+        "id": "7577eabe-2ff4-49ef-b821-cac67f3020a7"
+      }
+    },
+    {
+      "id": "4972f1ff-5a48-4658-9e64-fcfd0257fc1d",
+      "cell_type": "markdown",
+      "source": "#### Building a point calculation method task\n\nOne issue that we have now is that it's difficult to easily use our code to calculate points for many students without repeating the code we already have. That's becomes a reason to put all the point calculation into a method. \n\nWe've done almost all the hard work. We just need a full method definition. \n\nThe signature will be\n\n```java\npublic double calculatePoints()\n```\n\nBe sure you can identify each component of the signature.\n\nHere's what to do next. Copy all of the code in the last code cell ***except*** for any statements that display information or change values of the credit and `studyAway` variables. Paste that code into the next cell in the specified location. Run the code cell to make sure there are no errors (but you won't see anything yet).",
+      "metadata": {
+        "language": "markdown",
+        "id": "4972f1ff-5a48-4658-9e64-fcfd0257fc1d"
+      }
+    },
+    {
+      "id": "fb88d646-8428-4ec0-9219-a727d1d2fa98",
+      "cell_type": "code",
+      "source": "// Build the point calculation method here\npublic double calculatePoints() {\n    // Paste the code below this line\n\n\n    \n    // And above this line\n    return registrationPoints;\n}\n",
+      "metadata": {
+        "language": "java"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "id": "6e3e4fb2-83d0-4215-9ef7-d28bb244cc61",
+      "cell_type": "markdown",
+      "source": "If you did everything correctly, then you can run the next code cell to see the same number of registration points for the last test you did.",
+      "metadata": {
+        "language": "markdown",
+        "id": "6e3e4fb2-83d0-4215-9ef7-d28bb244cc61"
+      }
+    },
+    {
+      "id": "ff9b9bbd-4d46-40eb-b0fd-f66166f5aa7f",
+      "cell_type": "code",
+      "source": "// Testing the calculatePoints method\n\nSystem.out.println(\"Registration points: \" + calculatePoints());",
+      "metadata": {
+        "language": "java"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "id": "f204682b-3bbf-4c54-91e8-dc8e080760a6",
+      "cell_type": "markdown",
+      "source": "#### Adding more rules task\n\nMany students don't think that when they get to register depends on only the total number of credits. Some might want to assign points differently for the different kinds of credits; others might want to consider additional factors, like athletics or clubs or the student's major.\n\nAt the bottom of this description cell, you should first write **three** (or more) additional rules that you want to use in determining how many registration points a student gets. These rules are in addition to the existing rules; they do not replace them. \n\nHere are the additional guidelines.\n\n* Your new rules should be written in ways that can be easily translated into code. Example: *If the student studies away, they are assigned an additional 5 points.*\n* The rules must consider at least two new factors, like GPA or whether the student is an athlete. Not all your new rules need to use the new factors. \n* At least one of your new rules should use a logical expression, something that would require the `&&` or `||` logical operators. Example: *If the student has 88 or more total credits **and** fewer than 12 transfer credits, they are assigned an additional 3 points.*\n\nYou **should not** use any of these examples exactly as written, but you may modify them in some way that you can justify to others.\n\n**Add your new rules here**\n\nRule 1: \n\nRule 2: \n\nRule 3:\n\n*Add more rules if you've defined them*",
+      "metadata": {
+        "language": "markdown",
+        "id": "f204682b-3bbf-4c54-91e8-dc8e080760a6"
+      }
+    },
+    {
+      "id": "9e6bca43-5153-4522-a3c4-dd2ae30eedef",
+      "cell_type": "markdown",
+      "source": "#### Defining factors task\n\nThe previous task required that you add at least two new factors. For each factor, give the Java type and identifier you will use when you add these rules to your code.\n\nFactor 1:\n\nType:\n\nIdentifier: \n\nFactor 2:\n\nType:\n\nIdentifier:\n\n*Add more factors if you've defined them*",
+      "metadata": {
+        "language": "markdown",
+        "id": "9e6bca43-5153-4522-a3c4-dd2ae30eedef"
+      }
+    },
+    {
+      "id": "c6ae7e41-43db-45b7-922c-962a10f3a988",
+      "cell_type": "markdown",
+      "source": "#### Implementing your new rules task\n\nModify the `calculatePoints()` method to add conditional statements that implement your new rules. The code that's already present should not change.",
+      "metadata": {
+        "language": "markdown",
+        "id": "c6ae7e41-43db-45b7-922c-962a10f3a988"
+      }
+    },
+    {
+      "id": "8dade7ac-ec4d-4384-93db-d87dde2ba6ef",
+      "cell_type": "markdown",
+      "source": "#### Testing your new rules task\n\nIn the initial setup task, you declared variables for a student and assigned them values. \n\nReturn to that cell and declare the variables for the new factors using the type and identifier you stated and assigning them a value you choose.\n\nThen, run all the cells from the beginning to see that there are no errors and that you get a new value for the assigned number of registration points. \n\nIf there are errors, review the instructions and code from the past few tasks to be sure that they're done correctly. And ask questions if you're not sure.",
+      "metadata": {
+        "language": "markdown",
+        "id": "8dade7ac-ec4d-4384-93db-d87dde2ba6ef"
+      }
+    },
+    {
+      "id": "b8337351-8ff8-470d-b289-b2f9a2614c47",
+      "cell_type": "markdown",
+      "source": "#### Trying out some new students task\n\nIn the next *three* code cells, we're going to build three new students and test our method. Don't declare any variables; just assign new values to all existing variables, such as \n\n```java\nguilfordCredits = 47;\ntransferCredits = 0;\n```\n\nand so on so that each of the original variables *and* the variables you added for your factors have new values. \n\nThen, use the `calculatePoints()` method to display the registration points for that student.",
+      "metadata": {
+        "language": "markdown",
+        "id": "b8337351-8ff8-470d-b289-b2f9a2614c47"
+      }
+    },
+    {
+      "id": "778b8e15-104c-42ee-9bcc-b6a2b9981578",
+      "cell_type": "code",
+      "source": "// First additional student test case",
+      "metadata": {
+        "language": "java"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "id": "51c1d548-85ae-4035-9c9c-f95663ab7785",
+      "cell_type": "code",
+      "source": "// Second additional student test case\n",
+      "metadata": {
+        "language": "java"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "id": "70df0251-a919-4afc-ac66-d9c1deb39028",
+      "cell_type": "code",
+      "source": "// Third additional student test case\n",
+      "metadata": {
+        "language": "java"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "id": "60e20677-a3ca-424b-ae6b-374ba231776e",
+      "cell_type": "markdown",
+      "source": "#### Final task\n\nIn the next description cell, describe *how* you would verify that your method is calculating the registration points correctly. Then, for one of the four students in your code, show in detail that the calculated registration points are correct given their data.",
+      "metadata": {
+        "language": "markdown",
+        "id": "60e20677-a3ca-424b-ae6b-374ba231776e"
+      }
+    },
+    {
+      "id": "1cfd383f-f518-434f-9557-e6dad961c42e",
+      "cell_type": "markdown",
+      "source": "**Complete final task in this cell**\n\n",
+      "metadata": {
+        "language": "markdown",
+        "id": "1cfd383f-f518-434f-9557-e6dad961c42e"
+      }
+    },
+    {
+      "id": "da982a9b-9a2d-4da8-8cb2-a9e846509cc5",
+      "cell_type": "markdown",
+      "source": "#### Optional final challenge task\n\nUse the following cell to write code that obtains all the information about a student from the user and the displays the registration points for that student.",
+      "metadata": {
+        "language": "markdown",
+        "id": "da982a9b-9a2d-4da8-8cb2-a9e846509cc5"
+      }
+    },
+    {
+      "id": "d8535d46-54fd-4be2-999b-29e36340abc4",
+      "cell_type": "code",
+      "source": "// Code cell for final challenge task\n\n",
+      "metadata": {
+        "language": "java"
+      },
+      "execution_count": null,
+      "outputs": []
+    }
+  ]
+}
